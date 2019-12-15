@@ -31,17 +31,27 @@ simulate_data <- function(rows = 100, N = 5, U = 5, C = 0, matrices, activations
   if (C < 0 )
     stop("Argument C nonnegative.")
 
+  if (length(matrices) != length(activations)){
+    stop("Arguments matrices and activations should have the same length.")
+  }
+
+  if (length(matrices) < 1){
+    stop("Arguments matrices should have positive length.")
+  }
+
   #Confrim matrices dimentions are correct.
   if(nrow(matrices[[1]]) != N + U + C){
     stop("The number of rows in the first elemet of argument matrices did not equal N + U + C.")
   }
 
-  for(i in 2:length(matrices)){
-    tempCol = dim(matrices[[i - 1]])[2]
-    tempRow = dim(matrices[[i]])[1]
+  if (length(matrices) > 1) {
+    for(i in 2:length(matrices)){
+      tempCol = dim(matrices[[i - 1]])[2]
+      tempRow = dim(matrices[[i]])[1]
 
-    if( tempCol != tempRow)
-      stop(paste("Invalid dimensions between elements", i - 1, "and", i, "of argument matrices."))
+      if( tempCol != tempRow)
+        stop(paste("Invalid dimensions between elements", i - 1, "and", i, "of argument matrices."))
+    }
   }
 
   #################
@@ -73,24 +83,14 @@ simulate_data <- function(rows = 100, N = 5, U = 5, C = 0, matrices, activations
   #################
   OUT <- IN
 
-  i <- 1
   for(i in 1:length(matrices)){
     OUT <- OUT %*% matrices[[i]]
-    OUT <- t(as.matrix(colSums(OUT)))
     OUT <- activations[[i]](OUT)
   }
-
-  if (is.vector(OUT))
-    names(OUT) <- "Response"
-  else
-    colnames(OUT) <- stringr::str_c(rep("Response", ncol(OUT)), 1:ncol(OUT))
-
+  colnames(OUT) <- stringr::str_c(rep("Response", ncol(OUT)), 1:ncol(OUT))
 
   OUT2 <- cbind(IN, OUT)
-  if (is.vector(OUT))
-    colnames(OUT2) <- c(colnames(IN), names(OUT))
-  else
-    colnames(OUT2) <- c(colnames(IN), colnames(OUT))
+  colnames(OUT2) <- c(colnames(IN), colnames(OUT))
 
   return(OUT2)
 }
