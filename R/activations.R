@@ -1,7 +1,7 @@
 elu_R <- function(x, alpha = 1) {
-  out <- if_else (x >0,
-    out <- x,
-    out <- alpah * (exp(x) - 1)
+  out <- ifelse (x >0,
+    x,
+    alpha * (exp(x) - 1)
   )
 
   return(out)
@@ -20,7 +20,7 @@ softplus_R <- function(x){
   return(out)
 }
 
-softsign <- function(x){
+softsign_R <- function(x){
   out <- x / (abs(x) + 1)
 
   return(out)
@@ -45,8 +45,8 @@ sigmoid_R <- function(x){
   return(out)
 }
 
-hard_sigmoid <- function(x){
-  out <- if_else(x < -2.5, 0, if_else(x > 2.5, 1, .2*x + .5))
+hard_sigmoid_R <- function(x){
+  out <- ifelse(x < -2.5, 0, ifelse(x > 2.5, 1, .2*x + .5))
 
   return(out)
 }
@@ -57,8 +57,8 @@ exponential_R <- function(x){
   return(out)
 }
 
-linear_R <- function(X){
-  out <- identity(X)
+linear_R <- function(x){
+  out <- identity(x)
 
   return(out)
 }

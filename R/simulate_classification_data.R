@@ -1,4 +1,4 @@
-simulate_data <- function(rows = 100, N = 5, U = 5, C = 0, matrices, activations){
+simulate_classification_data <- function(rows = 100, N = 5, U = 5, C = 0, matrices, activations, noise = 0){
   #################
   # Check inputs
   #################
@@ -71,7 +71,7 @@ simulate_data <- function(rows = 100, N = 5, U = 5, C = 0, matrices, activations
 
   if (C > 0) {
     Cs <- matrix(ifelse(runif(rows * C) > .5, 1, 0),
-                      nrow = rows, ncol = C)
+                 nrow = rows, ncol = C)
     colnames(Cs) <- stringr::str_c(rep("C", C), 1:C)
   } else
     Cs <- matrix(0, nrow = rows, ncol = 0)
@@ -87,6 +87,13 @@ simulate_data <- function(rows = 100, N = 5, U = 5, C = 0, matrices, activations
     OUT <- OUT %*% matrices[[i]]
     OUT <- activations[[i]](OUT)
   }
+
+  if( any(OUT) > 1)
+    stop("Invalid set of matrices and activations. Probability above 1.")
+  if( any(OUT) < 0)
+    stop("Invalid set of matrices and activations. Probability below 0.")
+
+  OUT <- stats::rbinom(nrow(OUT), 1, OUT)
   colnames(OUT) <- stringr::str_c(rep("Response", ncol(OUT)), 1:ncol(OUT))
 
   OUT2 <- cbind(IN, OUT)
