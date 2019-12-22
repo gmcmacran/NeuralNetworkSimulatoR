@@ -1,13 +1,17 @@
 Package: NeuralNetworkSimulatoR
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Creates Ideal Data for a Neural Network
 Version: 0.1.0
 Author: Greg McMahan
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Maintainer: Greg McMahan <gmcmacran@gmail.com>
+Description: Ever wondered how learning rates,  activations or sample size affect model performance?
+    This package creates ideal data for a neural network structure. With this data
+    one can test how different settings affect the model learned.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     testthat
+Imports: 
+    stats (>= 3.5.3)
+RoxygenNote: 6.1.1
