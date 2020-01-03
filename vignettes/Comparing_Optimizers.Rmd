@@ -1,0 +1,88 @@
+---
+title: "Comparing Optimizers"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Comparing_Optimizers}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+In this vignette, data for a deep feed forward network is created. Then a few optimizers are compared. Please read the README file before reading this vignette.
+
+## Creating Data
+
+The structure of the network will be 5 hidden layers. The fist 3 layers will have 10 nodes. The last 2 hidden layers will have 3 nodes.
+
+To create the data, matrices and activations must be provided. 
+
+```{r  deep1}
+library(NeuralNetworkSimulatoR)
+
+M <- list(
+  matrix(rnorm(20*10, mean = 0, sd = 1), nrow = 20, ncol = 10),
+  matrix(rnorm(10*5, mean = 0, sd = 1), nrow = 10, ncol = 5),
+  matrix(rnorm(10*1, mean = 0, sd = 1), nrow = 5, ncol = 1)
+  )
+
+A <- list(linear_R, 
+          linear_R, 
+          linear_R)
+```
+
+A data set with 10 thousand rows is created.
+
+```{r  deep2}
+
+set.seed(1)
+simData <- simulate_regression_data(
+  rows = 100000L,
+  N = 20L, U = 0L, C = 0L,
+  matrices = M, activations = A,
+  noise = 0
+)
+
+```
+
+## Comparing Optimizers
+
+Optimizers only affect **how** the model is trained, not the model being trained. If 2 optimizers converge to the same **global** minimum, the two models would be identical and produce the same predictions.
+
+In practice, no optimizer ever finds the global minimum. Instead only local minima are found. It is important a good optimizer be selected. Unfortunately a good optimizer is data dependent. Even worse, some optimizers require tuning based on data. Seperating a bad optimization setting from a ill fitting network structure is challenging.
+
+The goal of this comparison is to find a good "off the shelf" optimizer while controlling for network strucutre. No optimizer settings are tuned. Default values are used. Additionally only a few epochs are done. A good "off the shelf" optimizer should be able to converge quickly.
+
+```{r opt1}
+library(magrittr)
+library(keras)
+
+X <- simData[,1:20]
+Y <- simData[,21]
+
+
+model <- keras_model_sequential() %>%
+  layer_dense(units = 10, activation = "linear", input_shape = 20, use_bias = FALSE) %>%
+  layer_dense(units = 5, activation = "linear",  use_bias = FALSE) %>%
+  layer_dense(units = 1, activation = "linear",  use_bias = FALSE)
+
+model %>%
+  compile(loss = loss_mean_squared_error,
+          optimizer = optimizer_rmsprop())
+
+model %>%
+  fit(x = X, y = Y,
+      epochs = 7,
+      batch_size = 128,
+      verbose = FALSE)
+
+get_weights(model)
+
+```

@@ -33,6 +33,36 @@ test_that("Linear Regression 3 variables", {
 rm(matrices, activations)
 
 ###################
+# Argument rows  works as expected
+###################
+matrices <- list(matrix(.1, nrow = 1, ncol = 1))
+activations <- list(sigmoid_R)
+
+test_that("1 normal variable", {
+  expect_true(simulate_classification_data(
+    rows = 10L,
+    N = 1L, U = 0L, C = 0L,
+    matrices = matrices, activations = activations
+  )
+  %>%
+    nrow() == 10)
+  expect_true(simulate_classification_data(
+    rows = 100L,
+    N = 1L, U = 0L, C = 0L,
+    matrices = matrices, activations = activations
+  )
+  %>%
+    nrow() == 100)
+  expect_true(simulate_classification_data(
+    rows = 200L,
+    N = 1L, U = 0L, C = 0L,
+    matrices = matrices, activations = activations
+  )
+  %>%
+    nrow() == 200)
+})
+
+###################
 # Argument N works as expected
 ###################
 numVar <- 1L

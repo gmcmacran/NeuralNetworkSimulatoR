@@ -10,8 +10,17 @@ Description: Ever wondered how learning rates,  activations or sample size affec
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Suggests: 
-    testthat
-Imports: 
-    stats (>= 3.5.3)
 RoxygenNote: 6.1.1
+Suggests: 
+    magrittr (>= 1.5),
+    testthat (>= 2.0.1),
+    covr (>= 3.2.1),
+    knitr (>= 1.22),
+    rmarkdown (>= 1.18),
+    keras (>= 2.2.5.0)
+Imports: 
+    stats (>= 3.5.3),
+    stringr (>= 1.4.0)
+Depends: 
+    R (>= 3.2)
+VignetteBuilder: knitr
