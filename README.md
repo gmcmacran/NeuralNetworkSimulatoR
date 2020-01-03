@@ -5,6 +5,12 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.org/gmcmacran/NeuralNetworkSimulatoR.svg?branch=master)](https://travis-ci.org/gmcmacran/NeuralNetworkSimulatoR)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/NeuralNetworkSimulatoR)](https://cran.r-project.org/package=NeuralNetworkSimulatoR)
+[![Codecov test
+coverage](https://codecov.io/gh/gmcmacran/NeuralNetworkSimulatoR/branch/master/graph/badge.svg)](https://codecov.io/gh/gmcmacran/NeuralNetworkSimulatoR?branch=master)
 <!-- badges: end -->
 
 Neural networks come with many knobs to set. Learning rates, number of
@@ -114,9 +120,9 @@ model %>%
 get_weights(model)
 #> [[1]]
 #>           [,1]
-#> [1,] 0.9987447
-#> [2,] 1.9995362
-#> [3,] 3.0000632
+#> [1,] 0.9999707
+#> [2,] 2.0001841
+#> [3,] 3.0001006
 ```
 
 See vignettes for more complex use case of this package.

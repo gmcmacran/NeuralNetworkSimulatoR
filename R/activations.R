@@ -1,4 +1,4 @@
-#' @title Activation functions in R
+#' @title Elu Activation Function in R
 #'
 #' @param x A numeric vector.
 #' @param alpha A numeric scalar.
@@ -12,7 +12,8 @@ elu_R <- function(x, alpha = 1) {
   return(out)
 }
 
-#' @describeIn elu_R softmax
+#' @title Softmax Activation Function in R
+#'
 #' @param x A numeric vector.
 #' @export
 softmax_R <- function(x) {
@@ -22,7 +23,8 @@ softmax_R <- function(x) {
   return(out)
 }
 
-#' @describeIn elu_R softplus
+#' @title Softplus Activation Function in R
+#'
 #' @param x A numeric vector.
 #' @export
 softplus_R <- function(x) {
@@ -31,7 +33,8 @@ softplus_R <- function(x) {
   return(out)
 }
 
-#' @describeIn elu_R softsign
+#' @title Softsign Activation Function in R
+#'
 #' @param x A numeric vector.
 #' @export
 softsign_R <- function(x) {
@@ -40,7 +43,8 @@ softsign_R <- function(x) {
   return(out)
 }
 
-#' @describeIn elu_R relu
+#' @title Relu Activation Function in R
+#'
 #' @param x A numeric vector.
 #' @param alpha A numeric scalar.
 #' @param max_value A numeric scalar.
@@ -53,7 +57,8 @@ relu_R <- function(x, alpha = 0, max_value = Inf, threshold = 0) {
   return(out)
 }
 
-#' @describeIn elu_R tanh
+#' @title Tanh Activation Function in R
+#'
 #' @param x A numeric vector.
 #' @export
 tanh_R <- function(x) {
@@ -62,7 +67,8 @@ tanh_R <- function(x) {
   return(out)
 }
 
-#' @describeIn elu_R sigmoid
+#' @title Sigmoid Activation Function in R
+#'
 #' @param x A numeric vector.
 #' @export
 sigmoid_R <- function(x) {
@@ -71,7 +77,8 @@ sigmoid_R <- function(x) {
   return(out)
 }
 
-#' @describeIn elu_R hard_sigmoid
+#' @title Hard Sigmoid Activation Function in R
+#'
 #' @param x A numeric vector.
 #' @export
 hard_sigmoid_R <- function(x) {
@@ -80,7 +87,8 @@ hard_sigmoid_R <- function(x) {
   return(out)
 }
 
-#' @describeIn elu_R exponential
+#' @title Exponential Activation Function in R
+#'
 #' @param x A numeric vector.
 #' @export
 exponential_R <- function(x) {
@@ -89,7 +97,8 @@ exponential_R <- function(x) {
   return(out)
 }
 
-#' @describeIn elu_R linear
+#' @title Linear Activation Function in R
+#'
 #' @param x A numeric vector.
 #' @export
 linear_R <- function(x) {
