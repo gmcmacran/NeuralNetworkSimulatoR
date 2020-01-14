@@ -7,7 +7,6 @@ context("Testing activations")
 test_that("Test elu_R", {
   expect_true(all(elu_R(x = c(1, 2, 3)) == c(1, 2, 3)))
   expect_true(all(elu_R(x = c(-3, -2, -1)) == c(exp(-3) - 1, exp(-2) - 1, exp(-1) - 1)))
-  expect_true(all(elu_R(x = c(-3, -2, -1), 2) == 2 * c(exp(-3) - 1, exp(-2) - 1, exp(-1) - 1)))
 })
 
 test_that("Test softmax_R", {
@@ -28,8 +27,6 @@ test_that("Test softsign_R", {
 test_that("Test relu_R", {
   expect_true(all(relu_R(x = c(1, 2, 3)) == c(1, 2, 3)))
   expect_true(all(relu_R(x = c(-1, -2, -3)) == c(0, 0, 0)))
-  expect_true(all(relu_R(x = c(1, 2, 3), max_value = -2) == c(-2, -2, -2)))
-  expect_true(all(relu_R(x = c(-1, -2, -3), threshold = -10) == c(-1, -2, -3)))
 })
 
 test_that("Test tanh_R", {

@@ -4,16 +4,10 @@
 \alias{relu_R}
 \title{Relu Activation Function in R}
 \usage{
-relu_R(x, alpha = 0, max_value = Inf, threshold = 0)
+relu_R(x)
 }
 \arguments{
 \item{x}{A numeric vector.}
-
-\item{alpha}{A numeric scalar.}
-
-\item{max_value}{A numeric scalar.}
-
-\item{threshold}{A numeric scalar.}
 }
 \description{
 Relu Activation Function in R

@@ -1,12 +1,11 @@
 #' @title Elu Activation Function in R
 #'
 #' @param x A numeric vector.
-#' @param alpha A numeric scalar.
 #' @export
-elu_R <- function(x, alpha = 1) {
+elu_R <- function(x) {
   out <- ifelse(x > 0,
     x,
-    alpha * (exp(x) - 1)
+    (exp(x) - 1)
   )
 
   return(out)
@@ -46,13 +45,9 @@ softsign_R <- function(x) {
 #' @title Relu Activation Function in R
 #'
 #' @param x A numeric vector.
-#' @param alpha A numeric scalar.
-#' @param max_value A numeric scalar.
-#' @param threshold A numeric scalar.
 #' @export
-relu_R <- function(x, alpha = 0, max_value = Inf, threshold = 0) {
-  out <- ifelse(x >= threshold, x, alpha * (x - threshold))
-  out <- pmin(out, max_value)
+relu_R <- function(x) {
+  out <- ifelse(x >= 0, x, 0)
 
   return(out)
 }

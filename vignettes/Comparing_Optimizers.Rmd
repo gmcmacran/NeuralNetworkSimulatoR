@@ -27,14 +27,15 @@ To create the data, matrices and activations must be provided.
 ```{r  deep1}
 library(NeuralNetworkSimulatoR)
 
+set.seed(1)
 M <- list(
   matrix(rnorm(20*10, mean = 0, sd = 1), nrow = 20, ncol = 10),
   matrix(rnorm(10*5, mean = 0, sd = 1), nrow = 10, ncol = 5),
   matrix(rnorm(10*1, mean = 0, sd = 1), nrow = 5, ncol = 1)
   )
 
-A <- list(linear_R, 
-          linear_R, 
+A <- list(relu_R, 
+          relu_R, 
           linear_R)
 ```
 
@@ -42,7 +43,6 @@ A data set with 10 thousand rows is created.
 
 ```{r  deep2}
 
-set.seed(1)
 simData <- simulate_regression_data(
   rows = 100000L,
   N = 20L, U = 0L, C = 0L,
@@ -68,21 +68,62 @@ X <- simData[,1:20]
 Y <- simData[,21]
 
 
-model <- keras_model_sequential() %>%
-  layer_dense(units = 10, activation = "linear", input_shape = 20, use_bias = FALSE) %>%
-  layer_dense(units = 5, activation = "linear",  use_bias = FALSE) %>%
+RmspropModel <- keras_model_sequential() %>%
+  layer_dense(units = 10, activation = "relu", input_shape = 20, use_bias = FALSE) %>%
+  layer_dense(units = 5, activation = "relu",  use_bias = FALSE) %>%
   layer_dense(units = 1, activation = "linear",  use_bias = FALSE)
 
-model %>%
+RmspropModel %>%
   compile(loss = loss_mean_squared_error,
           optimizer = optimizer_rmsprop())
 
-model %>%
+RmspropModel %>%
   fit(x = X, y = Y,
       epochs = 7,
       batch_size = 128,
       verbose = FALSE)
 
-get_weights(model)
+YHat <- predict(RmspropModel, x = X) %>%
+  as.vector()
+mean( (YHat - Y)^2 )
 
+AdamModel <- keras_model_sequential() %>%
+  layer_dense(units = 10, activation = "relu", input_shape = 20, use_bias = FALSE) %>%
+  layer_dense(units = 5, activation = "relu",  use_bias = FALSE) %>%
+  layer_dense(units = 1, activation = "linear",  use_bias = FALSE)
+
+AdamModel %>%
+  compile(loss = loss_mean_squared_error,
+          optimizer = optimizer_adam())
+
+AdamModel %>%
+  fit(x = X, y = Y,
+      epochs = 7,
+      batch_size = 128,
+      verbose = FALSE)
+
+YHat <- predict(AdamModel, x = X) %>%
+  as.vector()
+mean( (YHat - Y)^2 )
+
+SgdModel <- keras_model_sequential() %>%
+  layer_dense(units = 10, activation = "relu", input_shape = 20, use_bias = FALSE) %>%
+  layer_dense(units = 5, activation = "relu",  use_bias = FALSE) %>%
+  layer_dense(units = 1, activation = "linear",  use_bias = FALSE)
+
+SgdModel %>%
+  compile(loss = loss_mean_squared_error,
+          optimizer = optimizer_sgd())
+
+SgdModel %>%
+  fit(x = X, y = Y,
+      epochs = 7,
+      batch_size = 128,
+      verbose = FALSE)
+
+YHat <- predict(SgdModel, x = X) %>%
+  as.vector()
+mean( (YHat - Y)^2 )
 ```
+
+Adam was the best optimizer. Rmsprop also performed well. Sgd was the worst

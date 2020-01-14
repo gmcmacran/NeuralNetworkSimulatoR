@@ -4,12 +4,10 @@
 \alias{elu_R}
 \title{Elu Activation Function in R}
 \usage{
-elu_R(x, alpha = 1)
+elu_R(x)
 }
 \arguments{
 \item{x}{A numeric vector.}
-
-\item{alpha}{A numeric scalar.}
 }
 \description{
 Elu Activation Function in R
