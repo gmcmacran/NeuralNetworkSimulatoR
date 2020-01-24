@@ -119,10 +119,10 @@ model %>%
 
 get_weights(model)
 #> [[1]]
-#>           [,1]
-#> [1,] 0.9999707
-#> [2,] 2.0001841
-#> [3,] 3.0001006
+#>          [,1]
+#> [1,] 0.999986
+#> [2,] 1.999761
+#> [3,] 2.999899
 ```
 
 See vignettes for more complex use case of this package.

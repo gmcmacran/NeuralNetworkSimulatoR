@@ -44,7 +44,7 @@ A data set with 10 thousand rows is created.
 ```{r  deep2}
 
 simData <- simulate_regression_data(
-  rows = 100000L,
+  rows = 10000L,
   N = 20L, U = 0L, C = 0L,
   matrices = M, activations = A,
   noise = 0

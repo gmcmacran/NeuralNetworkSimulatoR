@@ -82,7 +82,7 @@ head(simData)
 ```
 
 
-Lets train a model and see if the true weights are estimated.
+Lets train a model and see if the true weights are estimated. 
 
 ```{r LR3}
 library(keras)
