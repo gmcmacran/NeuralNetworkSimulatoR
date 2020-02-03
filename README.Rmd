@@ -46,12 +46,11 @@ Standard activation functions are implemented in this package. It can also be ex
 
 ## How To Use The Package
 
-A feed forward neural network structure is defined as a series of matrix multiplications and activation functions. The values of the first hidden layer are defined as
+A feed forward neural network structure is defined as a series of matrix multiplications and activation functions. The values of the first hidden layer are defined as 
 
 $$
-A(M1 * M2)
+A(M1*M2)
 $$
-
 
 where M1 and M2 are matrices and A is a activation function. The elements of M2 are the parameters to be estimated during model training.
 
@@ -67,7 +66,7 @@ M <- list(matrix(1:3, nrow = 3, ncol = 1))
 A <- list(linear_R)
 ```
 
-A data set with 1000 rows and 3 predictors following a normal distribution is requested.
+A data set with 1000 rows and 3 predictors following a normal distribution is created.
 
 ```{r LR2}
 set.seed(1)
@@ -108,4 +107,4 @@ get_weights(model)
 
 ```
 
-See vignettes for more complex use case of this package.
+See vignettes for more complex use cases of this package.

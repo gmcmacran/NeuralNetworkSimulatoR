@@ -20,7 +20,7 @@ In this vignette, data for a deep feed forward network is created. Then a few op
 
 ## Creating Data
 
-The structure of the network will be 5 hidden layers. The fist 3 layers will have 10 nodes. The last 2 hidden layers will have 3 nodes.
+The structure of the underlying network will be 3 hidden layers. The fist two hidden layers will have 10 nodes. The last hidden layers will have 5 nodes.
 
 To create the data, matrices and activations must be provided. 
 
@@ -39,10 +39,9 @@ A <- list(relu_R,
           linear_R)
 ```
 
-A data set with 10 thousand rows is created.
+A data set with a thousand rows is created.
 
 ```{r  deep2}
-
 simData <- simulate_regression_data(
   rows = 10000L,
   N = 20L, U = 0L, C = 0L,

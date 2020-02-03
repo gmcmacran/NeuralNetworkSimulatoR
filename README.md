@@ -54,7 +54,7 @@ multiplications and activation functions. The values of the first hidden
 layer are defined as
 
 \[
-A(M1 * M2)
+A(M1*M2)
 \]
 
 where M1 and M2 are matrices and A is a activation function. The
@@ -74,7 +74,7 @@ A <- list(linear_R)
 ```
 
 A data set with 1000 rows and 3 predictors following a normal
-distribution is requested.
+distribution is created.
 
 ``` r
 set.seed(1)
@@ -120,9 +120,9 @@ model %>%
 get_weights(model)
 #> [[1]]
 #>          [,1]
-#> [1,] 0.999986
-#> [2,] 1.999761
-#> [3,] 2.999899
+#> [1,] 0.999045
+#> [2,] 2.000887
+#> [3,] 2.999437
 ```
 
-See vignettes for more complex use case of this package.
+See vignettes for more complex use cases of this package.
