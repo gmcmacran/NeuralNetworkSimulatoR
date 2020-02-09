@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/gmcmacran/NeuralNetworkSimulatoR/branch/master/graph/badge.svg)](https://codecov.io/gh/gmcmacran/NeuralNetworkSimulatoR?branch=master)
 <!-- badges: end -->
 
-Neural networks come with many knobs to set. Learning rates, number of nodes, number of layers, activation functions, drop out and many more. Often networks start to feel like a black box, even to the data scientist making the model.The goal of this package is to create ideal data for a neural network structure. The data scientist can then start to assess any questions they have and stop viewing neural networks as black boxes.
+Neural networks come with many knobs to set. Learning rates, number of nodes, number of layers, activation functions, drop out and many more. Often networks start to feel like a black box, even to the data scientist making the model.The goal of this package is give the data scientist data to work with. The data should be ideal for a neural network structure and immediately ready for analysis. The data scientist can then start to assess any questions they have and stop viewing neural networks as black boxes.
 
 ## Installation
 
@@ -42,7 +42,7 @@ devtools::install_github("gmcmacran/NeuralNetworkSimulatoR")
 
 This package does not train models. It only creates data. Therefore there are no deep learning framework dependencies. The examples use keras, but any framework could be used to train models.
 
-Standard activation functions are implemented in this package. It can also be extended to use custom activations that are implement in R.
+Standard activation functions are implemented in this package. It can also be extended to use custom activations that are implemented in R.
 
 ## How To Use The Package
 
@@ -81,7 +81,7 @@ head(simData)
 ```
 
 
-Lets train a model and see if the true weights are estimated. 
+Lets train a model and see if the true weights are estimated accurately. 
 
 ```{r LR3}
 library(keras)

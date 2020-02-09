@@ -16,10 +16,11 @@ coverage](https://codecov.io/gh/gmcmacran/NeuralNetworkSimulatoR/branch/master/g
 Neural networks come with many knobs to set. Learning rates, number of
 nodes, number of layers, activation functions, drop out and many more.
 Often networks start to feel like a black box, even to the data
-scientist making the model.The goal of this package is to create ideal
-data for a neural network structure. The data scientist can then start
-to assess any questions they have and stop viewing neural networks as
-black boxes.
+scientist making the model.The goal of this package is give the data
+scientist data to work with. The data should be ideal for a neural
+network structure and immediately ready for analysis. The data scientist
+can then start to assess any questions they have and stop viewing neural
+networks as black boxes.
 
 ## Installation
 
@@ -45,7 +46,7 @@ there are no deep learning framework dependencies. The examples use
 keras, but any framework could be used to train models.
 
 Standard activation functions are implemented in this package. It can
-also be extended to use custom activations that are implement in R.
+also be extended to use custom activations that are implemented in R.
 
 ## How To Use The Package
 
@@ -95,7 +96,7 @@ head(simData)
 #> [6,] -0.8204684 -1.66264885  0.69641761 -2.0565133
 ```
 
-Lets train a model and see if the true weights are estimated.
+Lets train a model and see if the true weights are estimated accurately.
 
 ``` r
 library(keras)
@@ -120,9 +121,9 @@ model %>%
 get_weights(model)
 #> [[1]]
 #>          [,1]
-#> [1,] 0.999045
-#> [2,] 2.000887
-#> [3,] 2.999437
+#> [1,] 1.000706
+#> [2,] 2.000602
+#> [3,] 2.999973
 ```
 
 See vignettes for more complex use cases of this package.
