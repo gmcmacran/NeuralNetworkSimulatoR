@@ -1,0 +1,81 @@
+---
+title: "Data For A Deep Regression Model"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Comparing_Optimizers}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+In this vignette, data for a deep feed forward network is created. Please read the README file before reading this vignette.
+
+## Matrices and Activations
+
+First a list of matrices must be made. The elements of each matrix are the Betas of the network. The dimensions are associated with the network's structure. Here is an example of creating ideal data for a network with 3 hidden layers. The first hidden layer has 10 nodes. The second hidden layer has 8 nodes. The third hidden layer has 5 nodes.
+
+```{r  deep1}
+library(NeuralNetworkSimulatoR)
+
+set.seed(1)
+M <- list(
+  matrix(rnorm(12*10, mean = 0, sd = 1), nrow = 12, ncol = 10),
+  matrix(rnorm(10*8, mean = 0, sd = 1), nrow = 10, ncol = 8),
+  matrix(rnorm(8*5, mean = 0, sd = 1), nrow = 8, ncol = 5),
+  matrix(rnorm(5*1, mean = 0, sd = 1), nrow = 5, ncol = 1)
+  )
+```
+
+Next activation functions for each hidden layer are selected. In this example, the first three activations are rule and the last is linear.
+```{r  deep2}
+A <- list(relu_R, 
+          relu_R,
+          relu_R,
+          linear_R)
+```
+
+## Creating Data
+With the matrices and activations created, a data set containing 12 input variables following a normal distribution is made.
+
+```{r  deep3}
+simData <- simulate_regression_data(
+  rows = 10000L,
+  N = 12L, U = 0L, C = 0L,
+  matrices = M, activations = A,
+  noise = 0
+)
+
+head(simData)
+```
+
+A data set with only categorical variables can also be created.
+```{r  deep4}
+simData <- simulate_regression_data(
+  rows = 10000L,
+  N = 0L, U = 0L, C = 12L,
+  matrices = M, activations = A,
+  noise = 0
+)
+
+head(simData)
+```
+
+Or a mixture of normal, uniform and categorical variables.
+```{r  deep5}
+simData <- simulate_regression_data(
+  rows = 10000L,
+  N = 6L, U = 3L, C = 3L,
+  matrices = M, activations = A,
+  noise = 0
+)
+
+head(simData)
+```
