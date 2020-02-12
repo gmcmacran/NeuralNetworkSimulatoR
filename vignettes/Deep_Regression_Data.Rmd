@@ -47,7 +47,7 @@ With the matrices and activations created, a data set containing 12 input variab
 
 ```{r  deep3}
 simData <- simulate_regression_data(
-  rows = 10000L,
+  rows = 1000L,
   N = 12L, U = 0L, C = 0L,
   matrices = M, activations = A,
   noise = 0
@@ -59,7 +59,7 @@ head(simData)
 A data set with only categorical variables can also be created.
 ```{r  deep4}
 simData <- simulate_regression_data(
-  rows = 10000L,
+  rows = 1000L,
   N = 0L, U = 0L, C = 12L,
   matrices = M, activations = A,
   noise = 0
@@ -71,7 +71,7 @@ head(simData)
 Or a mixture of normal, uniform and categorical variables.
 ```{r  deep5}
 simData <- simulate_regression_data(
-  rows = 10000L,
+  rows = 1000L,
   N = 6L, U = 3L, C = 3L,
   matrices = M, activations = A,
   noise = 0
