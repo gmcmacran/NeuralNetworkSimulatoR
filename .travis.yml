@@ -10,7 +10,7 @@ before_install:
 
 install:
   - pip install --upgrade pip
-  - install: pip3 install --upgrade pip
+  - pip3 install --upgrade --ignore-installed --user travis virtualenv
 
 before_script:
   - R CMD INSTALL .
