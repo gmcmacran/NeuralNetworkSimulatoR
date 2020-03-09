@@ -1,18 +1,12 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: R
-dist: xenial
 sudo: true
-warnings_are_errors: false
-
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install python3 python3-pip
-  - easy_install distribute --user travis virtualenv
-  - pip install --upgrade --ignore-installed --user travis virtualenv
-  - pip3 install --upgrade --ignore-installed --user travis virtualenv
 
 before_script:
+  - sudo apt-get update
+  - sudo apt-get install python3 python3-pip
+  - pip3 install --upgrade --ignore-installed --user travis virtualenv
   - R CMD INSTALL .
   - R -e 'Sys.setenv(PIP_QUIET=1); keras::install_keras()'
   - R -e 'tensorflow::tf_config()'
