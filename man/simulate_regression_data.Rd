@@ -33,6 +33,7 @@ Simulate data for a Neural Network Structure.
 \examples{
 library(NeuralNetworkSimulatoR)
 
+# Network with no hidden layers.
 # Linear regression with weights 1, 2, and 3
 M <- list(matrix(1:3, nrow = 3, ncol = 1))
 A <- list(linear_R)
@@ -42,12 +43,11 @@ simData <- simulate_regression_data(
   matrices = M, activations = A,
   noise = 0
 )
-rm(A, M)
+rm(A, M, simData)
 
-# Complex network
-# 10 nodes in first hidden layer. Activation relu
-# 5 nodes in second hidden layer  Activation elu
-
+# Network with 1 hidden layer.
+# 10 nodes in first layer. Activation relu
+# 5 nodes in second layer.  Activation elu_R (hidden layer)
 M <- list(matrix(1:10, nrow = 10, ncol = 5), matrix(1:5, nrow = 5, ncol = 1))
 A <- list(relu_R, elu_R)
 simData <- simulate_regression_data(
@@ -56,7 +56,24 @@ simData <- simulate_regression_data(
   matrices = M, activations = A,
   noise = 0
 )
-rm(A, M)
+rm(A, M, simData)
 
-rm(simData)
+# Network with 2 hidden layers.
+# 10 nodes in first layer. Activation relu
+# 5 nodes in second layer.  Activation linear_R (hidden layer)
+# 3 nodes in third layer.  Activation relu_R (hidden layer)
+M <- list(
+  matrix(1:10, nrow = 10, ncol = 5),
+  matrix(1:5, nrow = 5, ncol = 3),
+  matrix(1:3, nrow = 3, ncol = 1)
+)
+A <- list(relu_R, linear_R, relu_R)
+simData <- simulate_regression_data(
+  rows = 1000L,
+  N = 5L, U = 5L, C = 0L,
+  matrices = M, activations = A,
+  noise = 0
+)
+
+rm(A, M, simData)
 }
