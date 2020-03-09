@@ -2,7 +2,7 @@
 title: "Data For A Deep Regression Model"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Comparing_Optimizers}
+  %\VignetteIndexEntry{regression}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

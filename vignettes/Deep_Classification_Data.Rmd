@@ -2,7 +2,7 @@
 title: "Data For A Deep Classification Model"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Comparing_Optimizers}
+  %\VignetteIndexEntry{Classification}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
