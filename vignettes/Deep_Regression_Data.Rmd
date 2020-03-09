@@ -34,7 +34,7 @@ M <- list(
   )
 ```
 
-Next activation functions for each hidden layer are selected. In this example, the first three activations are rule and the last is linear.
+Next activation functions for each hidden layer are selected. In this example, the first three activations are relu and the last is linear.
 ```{r  deep2}
 A <- list(relu_R, 
           relu_R,

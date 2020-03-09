@@ -59,7 +59,7 @@ elements of M2 are the parameters to be estimated during model training.
 
 ## Example: Linear Regression
 
-The linear regression model is a simple network with only one layer.
+The linear regression model is a simple network with no hidden layers.
 First we must provide the matrix and activation function.
 
 ``` r
@@ -117,9 +117,9 @@ model %>%
 get_weights(model)
 #> [[1]]
 #>           [,1]
-#> [1,] 0.9999988
-#> [2,] 2.0000370
-#> [3,] 3.0000162
+#> [1,] 0.9998065
+#> [2,] 1.9994999
+#> [3,] 3.0001712
 ```
 
 See vignettes for more complex use cases of this package.

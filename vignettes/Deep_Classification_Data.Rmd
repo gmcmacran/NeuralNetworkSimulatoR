@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-Ovarall, the process for classification is very similar to the regression process. The main difference is to select the final activation to force a probability to be created.
+Overall, the process for classification is very similar to the regression process. The main difference is to select the final activation to force a probability to be created.
 
 ## Matrices and Activations
 
@@ -34,7 +34,7 @@ M <- list(
   )
 ```
 
-Next activation functions for each hidden layer are selected. In this example, the first three activations are rule and the last is sigmoid.
+Next activation functions for each hidden layer are selected. In this example, the first three activations are relu and the last is sigmoid.
 ```{r  deep2}
 A <- list(relu_R, 
           relu_R,

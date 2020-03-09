@@ -54,7 +54,7 @@ where M1 and M2 are matrices and A is a activation function. The elements of M2 
 
 ## Example: Linear Regression
 
-The linear regression model is a simple network with only one layer. First we must provide the matrix and activation function.
+The linear regression model is a simple network with no hidden layers. First we must provide the matrix and activation function.
 
 ```{r LR1}
 library(NeuralNetworkSimulatoR)
