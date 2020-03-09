@@ -48,7 +48,10 @@ rm(A, M, simData)
 # Network with 1 hidden layer.
 # 10 nodes in first layer. Activation relu
 # 5 nodes in second layer.  Activation elu_R (hidden layer)
-M <- list(matrix(1:10, nrow = 10, ncol = 5), matrix(1:5, nrow = 5, ncol = 1))
+M <- list(
+  matrix(1:10, nrow = 10, ncol = 5),
+  matrix(1:5, nrow = 5, ncol = 1)
+)
 A <- list(relu_R, elu_R)
 simData <- simulate_regression_data(
   rows = 1000L,
