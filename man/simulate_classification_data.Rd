@@ -4,7 +4,7 @@
 \alias{simulate_classification_data}
 \title{Simulate data for a Neural Network Structure.}
 \usage{
-simulate_classification_data(rows = 1000, N = 5, U = 5, C = 0,
+simulate_classification_data(rows = 1000L, N = 5L, U = 5L, C = 0L,
   matrices, activations)
 }
 \arguments{

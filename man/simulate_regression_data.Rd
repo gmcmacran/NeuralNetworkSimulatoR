@@ -4,7 +4,7 @@
 \alias{simulate_regression_data}
 \title{Simulate data for a Neural Network Structure.}
 \usage{
-simulate_regression_data(rows = 1000, N = 5, U = 5, C = 0,
+simulate_regression_data(rows = 1000L, N = 5L, U = 5L, C = 0L,
   matrices, activations, noise = 0)
 }
 \arguments{

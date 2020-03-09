@@ -53,7 +53,7 @@
 #' )
 #' rm(A, M, simData)
 #' @export
-simulate_classification_data <- function(rows = 1000, N = 5, U = 5, C = 0, matrices, activations) {
+simulate_classification_data <- function(rows = 1000L, N = 5L, U = 5L, C = 0L, matrices, activations) {
   #################
   # Check inputs
   #################
