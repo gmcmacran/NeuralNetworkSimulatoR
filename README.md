@@ -9,14 +9,13 @@
 status](https://www.r-pkg.org/badges/version/NeuralNetworkSimulatoR)](https://cran.r-project.org/package=NeuralNetworkSimulatoR)
 <!-- badges: end -->
 
-Neural networks come with many knobs to set. Learning rates, number of
+Neural networks come with many knobs to turn. Learning rates, number of
 nodes, number of layers, activation functions, drop out and many more.
-Often networks start to feel like a black box, even to the data
-scientist making the model.The goal of this package is give the data
-scientist data to work with. The data should be ideal for a neural
-network structure and immediately ready for analysis. The data scientist
-can then start to assess any questions they have and stop viewing neural
-networks as black boxes.
+With all these knobs, it is difficult to know which are important and
+which are not. The goal of this package is give the data scientist data
+to work with. The data should be ideal for a neural network structure
+and immediately ready for analysis. The data scientist can then
+empiracly test which knobs are important and which knobs are not.
 
 ## Installation
 
@@ -44,7 +43,7 @@ keras, but any framework could be used to train models.
 Standard activation functions are implemented in this package. It can
 also be extended to use custom activations that are implemented in R.
 
-## How To Use The Package
+## Mathimatical Background
 
 A feed forward neural network structure is defined as a series of matrix
 multiplications and activation functions. The values of the first hidden
@@ -116,10 +115,10 @@ model %>%
 
 get_weights(model)
 #> [[1]]
-#>           [,1]
-#> [1,] 0.9998065
-#> [2,] 1.9994999
-#> [3,] 3.0001712
+#>          [,1]
+#> [1,] 1.000080
+#> [2,] 2.000036
+#> [3,] 2.999985
 ```
 
 See vignettes for more complex use cases of this package.
