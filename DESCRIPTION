@@ -6,7 +6,7 @@ Author: Greg McMahan
 Maintainer: Greg McMahan <gmcmacran@gmail.com>
 Description: Ever wondered how learning rates,  activations or sample size affect model performance?
     This package creates ideal data for a neural network structure. With this data
-    one can test how different settings affect the model learned.
+    one can test how different settings affect the model's performance.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -17,7 +17,8 @@ Suggests:
     covr (>= 3.2.1),
     knitr (>= 1.22),
     rmarkdown (>= 1.18),
-    keras (>= 2.2.5.0)
+    keras (>= 2.2.5.0),
+    dplyr (>= 0.8.0.1)
 Imports: 
     stats (>= 3.5.3),
     stringr (>= 1.4.0)
