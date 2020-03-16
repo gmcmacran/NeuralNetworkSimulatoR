@@ -16,28 +16,28 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-Overall, the process for classification is very similar to the regression process. The main difference is to select the final activation to force a probability to be created.
+Overall, the process for classification is very similar to the regression process. The main difference is the last activation must have a range between 0 and 1.
 
 ## Matrices and Activations
 
-First a list of matrices must be made. The elements of each matrix are the Betas of the network. The dimensions are associated with the network's structure. Here is an example of creating ideal data for a network with 3 hidden layers. The first hidden layer has 10 nodes. The second hidden layer has 8 nodes. The third hidden layer has 5 nodes.
+First a list of matrices must be made. The elements of each matrix are the Betas of the network. The dimensions are associated with the network's structure. Here is an example of creating ideal data for a network with 2 hidden layers. The first hidden layer has 8 nodes. The second hidden layer has 2 nodes.
 
 ```{r  deep1}
 library(NeuralNetworkSimulatoR)
 
 set.seed(1)
 M <- list(
-  matrix(rnorm(12*10, mean = 0, sd = 1), nrow = 12, ncol = 10),
-  matrix(rnorm(10*8, mean = 0, sd = 1), nrow = 10, ncol = 8),
-  matrix(rnorm(8*5, mean = 0, sd = 1), nrow = 8, ncol = 5),
-  matrix(rnorm(5*1, mean = 0, sd = 1), nrow = 5, ncol = 1)
+  matrix(rnorm(12*10, mean = 0, sd = 1), nrow = 12, ncol = 8),
+  matrix(rnorm(8*2, mean = 0, sd = 1), nrow = 8, ncol = 2),
+  matrix(rnorm(2*1, mean = 0, sd = 1), nrow = 2, ncol = 1)
   )
 ```
 
-Next activation functions for each hidden layer are selected. In this example, the first three activations are relu and the last is sigmoid.
+nrow in the first matrix (12 in the above) is the number of columns in the data set (see below). ncol of the first matrix must be nrow of the second matrix (8 above). The last matrix must have only one column associated with the network's head.
+
+Next activation functions for each hidden layer are selected. In this example, the first two activations are relu and the last is sigmoid. Note the last activation must have a range between 0 and 1.
 ```{r  deep2}
 A <- list(relu_R, 
-          relu_R,
           relu_R,
           sigmoid_R)
 ```
