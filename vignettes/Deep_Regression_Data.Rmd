@@ -34,6 +34,8 @@ M <- list(
   )
 ```
 
+nrow in the first matrix (12 in the above) is the number of columns in the data set (see below). ncol of the first matrix must be nrow of the second matrix (10 above). This repeats until the last matrix which must have only one column.
+
 Next activation functions for each hidden layer are selected. In this example, the first three activations are relu and the last is linear.
 ```{r  deep2}
 A <- list(relu_R, 
