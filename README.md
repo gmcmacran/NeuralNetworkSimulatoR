@@ -50,11 +50,12 @@ multiplications and activation functions. The values of the first hidden
 layer are defined as
 
 \[
-A(M1*M2)
+A(M_1*M_2)
 \]
 
-where M1 and M2 are matrices and A is a activation function. The
-elements of M2 are the parameters to be estimated during model training.
+where \(M_1\) and \(M_2\) are matrices and \(A\) is a activation
+function. The elements of \(M_2\) are the parameters to be estimated
+during model training.
 
 ## Example: Linear Regression
 
@@ -115,10 +116,10 @@ model %>%
 
 get_weights(model)
 #> [[1]]
-#>          [,1]
-#> [1,] 1.000080
-#> [2,] 2.000036
-#> [3,] 2.999985
+#>           [,1]
+#> [1,] 0.9998646
+#> [2,] 2.0013382
+#> [3,] 3.0010245
 ```
 
 See vignettes for more complex use cases of this package.

@@ -47,10 +47,10 @@ Standard activation functions are implemented in this package. It can also be ex
 A feed forward neural network structure is defined as a series of matrix multiplications and activation functions. The values of the first hidden layer are defined as 
 
 $$
-A(M1*M2)
+A(M_1*M_2)
 $$
 
-where M1 and M2 are matrices and A is a activation function. The elements of M2 are the parameters to be estimated during model training.
+where $M_1$ and $M_2$ are matrices and $A$ is a activation function. The elements of $M_2$ are the parameters to be estimated during model training.
 
 ## Example: Linear Regression
 
