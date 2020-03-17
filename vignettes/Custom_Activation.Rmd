@@ -13,11 +13,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introduction
 
-The package is designed to be easily extended. In this vignette, a custom activation will be used. Please read the README and and Deep Regression Data vignette before this one.
+The package is designed to be easily extended. In this vignette, a custom activation will be used. Please read the README and Deep Regression Data vignette before this one.
 
 ## Defining A Custom Activation
 
-The usual relu is linear if x is above 0 with no maximum. The custom activation will be linear between 1 and 10. THe maximum value will be 10. 
+The usual relu is linear if x is above zero with no maximum. The custom activation will be linear starting at one instead of zero and will have a maximum value of ten. Note this is just a regular R function.
 
 ```{r p1}
 custom_relu_R <- function(x) {
@@ -29,23 +29,12 @@ custom_relu_R <- function(x) {
 
 ```
 
-The above just a regular R function. Lets test a few values to make sure it acts as expected.
-
-```{r p2}
-custom_relu_R(0)
-custom_relu_R(1)
-custom_relu_R(5)
-custom_relu_R(10)
-custom_relu_R(20)
-custom_relu_R(22)
-```
-
 ## Making Data
 
-With the function defined, the remaining code is nearly identical to the README example. Only the activation changes.
+With the custom activation defined, the remaining code is nearly identical to the README example. Only the activation changes.
 
 ```{r data1}
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 library(NeuralNetworkSimulatoR)
 
 M <- list(matrix(c(-1, -2, -3), nrow = 3, ncol = 1))
@@ -64,7 +53,7 @@ simData <- simulate_regression_data(
 head(simData)
 ```
 
-```{r r data3}
+```{r LR3}
 library(keras)
 
 X <- simData[,1:3]
@@ -72,15 +61,19 @@ Y <- simData[,4]
 
 
 model <- keras_model_sequential() %>%
-  layer_dense(units = 1, activation = "relu", input_shape = 3, use_bias = FALSE, kernel_initializer = initializer_constant(value = 1))
+  layer_dense(input_shape = 3, 
+              use_bias = FALSE, 
+              kernel_initializer = initializer_constant(value = 1),
+              units = 1) %>%
+  activation_relu(alpha = 1, threshold = 10)
 
 model %>%
   compile(loss = loss_mean_squared_error,
-          optimizer = optimizer_rmsprop(lr = .0001))
+          optimizer = optimizer_rmsprop())
 
 model %>%
   fit(x = X, y = Y,
-      epochs = 20,
+      epochs = 30,
       batch_size = 10,
       verbose = FALSE)
 
