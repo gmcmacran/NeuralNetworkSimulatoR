@@ -19,6 +19,8 @@ before_install:
   - sudo -H python get-pip.py > /dev/null
   - pip install --upgrade --ignore-installed --user travis virtualenv > /dev/null
 
+r_packages: reticulate
+
 before_script:
   - R CMD INSTALL . > /dev/null
   - R -e 'keras::install_keras()'
