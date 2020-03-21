@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/NeuralNetworkSimulatoR)](https://cran.r-project.org/package=NeuralNetworkSimulatoR)
+[![Travis build status](https://travis-ci.org/gmcmacran/NeuralNetworkSimulatoR.svg?branch=master)](https://travis-ci.org/gmcmacran/NeuralNetworkSimulatoR)
 <!-- badges: end -->
 
 Neural networks come with many knobs to turn. Learning rates, number of nodes, number of layers, activation functions, drop out and many more. With all these knobs, it is difficult to know which are important and which are not. The goal of this package is give the data scientist data to work with. The data should be ideal for a neural network structure and immediately ready for analysis. The data scientist can then empiracly test which knobs are important and which knobs are not.

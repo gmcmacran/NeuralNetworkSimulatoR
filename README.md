@@ -7,6 +7,8 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/NeuralNetworkSimulatoR)](https://cran.r-project.org/package=NeuralNetworkSimulatoR)
+[![Travis build
+status](https://travis-ci.org/gmcmacran/NeuralNetworkSimulatoR.svg?branch=master)](https://travis-ci.org/gmcmacran/NeuralNetworkSimulatoR)
 <!-- badges: end -->
 
 Neural networks come with many knobs to turn. Learning rates, number of
@@ -117,9 +119,9 @@ model %>%
 get_weights(model)
 #> [[1]]
 #>           [,1]
-#> [1,] 0.9998646
-#> [2,] 2.0013382
-#> [3,] 3.0010245
+#> [1,] 0.9993249
+#> [2,] 2.0005736
+#> [3,] 2.9994645
 ```
 
 See vignettes for more complex use cases of this package.
