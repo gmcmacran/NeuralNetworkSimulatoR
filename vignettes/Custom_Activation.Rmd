@@ -16,13 +16,14 @@ knitr::opts_chunk$set(echo = TRUE)
 The package is designed to be easily extended. In this vignette, a custom activation will be used. Please read the README and Deep Regression Data vignette before this one.
 
 ## Defining A Custom Activation
+To create data ideal for a neural network using a custom activation function, only the custom activation function written in R is needed. It should have one argument named x.
 
-The usual relu is linear if x is above zero with no maximum. The custom activation will be linear starting at one instead of zero and will have a maximum value of ten. Note this is just a regular R function.
+The usual relu is linear if x is above zero with no maximum. This custom activation will be linear with a max value of 10.
 
 ```{r p1}
 custom_relu_R <- function(x) {
-  out <- ifelse(x >= 1, x, 1)
-  out <- pmin(out, 20)
+  out <- ifelse(x >= 0, x, 0)
+  out <- pmin(out, 10)
   
   return(out)
 }
@@ -37,9 +38,12 @@ With the custom activation defined, the remaining code is nearly identical to th
 library(dplyr, warn.conflicts = FALSE)
 library(NeuralNetworkSimulatoR)
 
-M <- list(matrix(c(-1, -2, -3), nrow = 3, ncol = 1))
+#Weights are 1, 2, and 3
+M <- list(matrix(1:3, nrow = 3, ncol = 1))
 A <- list(custom_relu_R)
 ```
+
+Lets create data with three continous variables and one thousand rows.
 
 ```{r r data2}
 set.seed(1)
@@ -53,6 +57,7 @@ simData <- simulate_regression_data(
 head(simData)
 ```
 
+Using this data, lets train a model and look at the Betas.
 ```{r LR3}
 library(keras)
 
@@ -61,11 +66,11 @@ Y <- simData[,4]
 
 
 model <- keras_model_sequential() %>%
-  layer_dense(input_shape = 3, 
+  layer_dense(units = 1, 
+              input_shape = 3, 
               use_bias = FALSE, 
-              kernel_initializer = initializer_constant(value = 1),
-              units = 1) %>%
-  activation_relu(alpha = 1, threshold = 10)
+              kernel_initializer = initializer_constant(value = 1)) %>%
+  layer_activation_relu(max_value = 10)
 
 model %>%
   compile(loss = loss_mean_squared_error,
@@ -78,5 +83,6 @@ model %>%
       verbose = FALSE)
 
 get_weights(model)
-
 ```
+
+The estimated weights are very close to the true values.
