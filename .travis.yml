@@ -24,3 +24,7 @@ r_packages: reticulate
 before_script:
   - R CMD INSTALL . > /dev/null
   - R -e 'keras::install_keras()'
+
+after_success:
+  - Rscript -e 'covr::codecov()'
+
